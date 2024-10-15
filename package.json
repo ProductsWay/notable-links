@@ -28,7 +28,7 @@
     "@libsql/client": "0.3.6",
     "drizzle-orm": "0.29.1",
     "elysia": "latest",
-    "pino": "8.16.2"
+    "pino": "9.5.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "3.0.1",
