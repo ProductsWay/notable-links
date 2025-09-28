@@ -33,6 +33,7 @@ export const links = sqliteTable(
     categoryId: integer("category_id")
       .notNull()
       .references(() => categories.id),
+    userId: text("user_id").references(() => users.id),
     createdAt: integer("created_at").default(sql`(cast (unixepoch () as int))`),
     updatedAt: integer("updated_at").default(sql`(cast (unixepoch () as int))`),
   },
@@ -40,13 +41,18 @@ export const links = sqliteTable(
     idIdx: uniqueIndex("id_idx").on(links.id),
     urlIdx: index("url_idx").on(links.url),
     categoryIdIdx: index("category_id_idx").on(links.categoryId),
+    userIdIdx: index("user_id_idx").on(links.userId),
   }),
 );
 
 export const linksRelations = relations(links, ({ one }) => ({
-  user: one(categories, {
+  category: one(categories, {
     fields: [links.categoryId],
     references: [categories.id],
+  }),
+  user: one(users, {
+    fields: [links.userId],
+    references: [users.id],
   }),
 }));
 
@@ -74,3 +80,7 @@ export const users = sqliteTable(
     ),
   }),
 );
+
+export const usersRelations = relations(users, ({ many }) => ({
+  links: many(links),
+}));
