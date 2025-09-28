@@ -33,6 +33,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# database
+local.db
+local.db-shm
+local.db-wal
+
 **/*.trace
 **/*.zip
 **/*.tar.gz

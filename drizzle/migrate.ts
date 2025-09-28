@@ -5,7 +5,7 @@ import { migrate } from "drizzle-orm/libsql/migrator";
 import logger from "../server/logger";
 
 const auth = {
-  url: process.env.TURSO_DB_URL ?? "",
+  url: process.env.TURSO_DB_URL ?? "file:./local.db",
   authToken: process.env.TURSO_DB_AUTH_TOKEN,
 };
 

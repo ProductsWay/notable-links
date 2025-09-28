@@ -5,7 +5,7 @@ import { app } from ".";
 describe("Elysia", () => {
   it("return a response", async () => {
     const response = await app
-      .handle(new Request("http://localhost/hello"))
+      .handle(new Request("http://localhost/"))
       .then(async (res) => res.text());
 
     expect(response).toBe("Hello Elysia");
@@ -23,6 +23,6 @@ describe("Elysia", () => {
     const response = await app
       .handle(new Request("http://localhost/swagger"))
       .then(async (res) => res.text());
-    expect(response).toContain("Elysia API Documentation");
+    expect(response).toContain("Notable Links API");
   });
 });
